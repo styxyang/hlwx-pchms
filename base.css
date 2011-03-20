@@ -1,0 +1,265 @@
+/* CSS Document */
+#user {
+	border-left: 1px solid #B2D1A3;
+}
+
+#head {
+	border:1px solid #b2d1a3;
+}
+
+a {
+	color: rgb(35,81,152);
+}
+
+a:link, a:visited {
+	text-decoration:none;
+}
+
+#top_title {
+	width:800px;
+	height:90px;
+	background-image: url(/title.png);
+	background-repeat:no-repeat;
+	background-position-x:50%;
+	vertical-align:top;
+	background-position: left;
+	border-bottom-style: double;
+	border-bottom-width: 8px;
+	border-bottom-color: #D7D7D7;
+	margin: 5px;
+}
+
+.user_settings {
+	height:auto;
+	word-break:keep-all;
+	float: right;
+	background:#FFED00;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;
+}
+
+#wrapper {
+	min-height:100%;
+	height:100%;
+	vertical-align:top;
+	position:relative;
+	background-image: url(/overlay.png);
+	background-repeat:repeat;
+}
+#logo {
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-bottomleft:10px;
+	-webkit-border-top-left-radius:10px;
+	-webkit-border-bottom-left-radius:10px;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+}
+
+/* settings for plot area */
+#plot {
+	height: 400px;
+	width: 900px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius: 20px;
+/*	background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.2, rgb(214,214,214)),
+    color-stop(1, rgb(247,247,247))
+	);
+	background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(214,214,214) 20%,
+    rgb(247,247,247) 100%
+	);*/
+}
+#holder {
+	float: left;
+	width: 75%;
+	/*border-right: 1px solid #FFF;*/
+	/*background-color: #FFF;*/
+/*	background-image: url(/trans.png);
+	background-repeat: repeat;*/
+	background: rgba(255,255,255, 0.6);
+	margin-top: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 3px 7px #333;
+	-moz-box-shadow: 0px 3px 7px #333;
+	margin-left: 10px;
+}
+
+#chart_title {
+	font-size: 28px;
+	color: #000;
+	height:auto;
+	width: 75%;
+	border-bottom: 1px solid #CCC;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+#placeholder {
+	height:300px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+#myCanvas {
+	height: 300px;
+	width: 600px;
+	-webkit-box-shadow: 0px 0px 7px #333;
+	-moz-box-shadow: 0px 0px 7px #333;
+	/*	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;*/
+	border: 1px solid #fff;
+	background: #fff;
+	display: none;
+	margin: 5px;
+}
+
+/* style for menus and highlight */
+#menus {
+	-webkit-box-shadow: 0px 3px 7px #333;
+	-moz-box-shadow: 0px 3px 7px #333;	float: left;
+	margin-top: 20px;
+	width: 20%;
+	background: rgba(255,255,255, 0.6);
+	-moz-border-radius: 10px;
+	-webkit-border-radius:10px;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	/*background-color: #FFF;*/
+}
+ul {
+	display: block;
+	list-style: none;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 40px;
+	margin-left: 10px;
+	padding: 0;
+}
+li {
+	border-left:10px;
+	display: inline-block;
+	list-style: none;
+}
+#wrapper #plot #menus ul li {
+	width: 120px;
+}
+
+#menus ul * {
+	padding:6px 11px;
+}
+li.alt {
+	background:#ecf6fc; /*这行将给所有的tr加上背景色*/
+}
+li.over {
+	background:#bcd4ec; /*这个将是鼠标高亮行的背景色*/
+}
+.wrapper #plot_area #plot tr #left {
+	margin:0;
+	vertical-align: top;
+}
+.wrapper #plot_area #plot tr #left div #menus {
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-bottomleft:10px;
+	-webkit-border-top-left-radius:10px;
+	-webkit-border-bottom-left-radius:10px;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	position: relative;
+	top: 30px;
+	background-color: #FFF;
+}
+.wrapper #plot #menus li {
+	list-style: none;
+}
+
+/********************************************/
+
+.info {
+	border-top:1px solid #999;
+}
+.proj {
+	display:block;
+	list-style-type: disc;
+	float:right;
+	list-style:none;
+}
+.frame {
+	background-color:#FFFFFF;
+	border:1px solid #999;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;
+}
+html, body {
+	height:100%;
+}
+body {
+	color: rgb(35,81,152);
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	min-height:100%;
+	font-size: 13px;
+	width: 100%;
+	min-height:100%;
+	height: 100%;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	background-image: url(/swirlled.png);
+	background-position: top center;
+	//background-attachment: fixed;
+	background-repeat: repeat;
+	background-color: #F3F3F3;
+	/*background-color: rgb(183,220,244);*/
+	/*background-image:url(/background.png);*/
+	/*background-repeat:repeat-x;*/
+	text-align:center;
+}
+#top_title table tr td ul li {
+	display:inline-block;
+	list-style:none;
+	margin-right:1ex;
+}
+
+.info ul.proj li {
+	display:inline-block;
+	list-style:none;
+	margin-right:1ex;
+}
+;
+.info ul.proj li:after {
+	content:"|";
+	color:#AAA;
+}
+
+.wrapper #top_title .user_settings tr td ul li a:hover {
+	text-decoration: underline!important;
+}
+.label_input {
+	display: block;
+}
+
+#floatbox-box {
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;
+}
+
+#download_list ul li {
+    display: list-item;
+}
+#download_list ul {
+    display: block;
+    list-style-type: disc;
+}
