@@ -1,0 +1,38 @@
+/* CSS Document */
+
+.time_span {
+	width: 50px;
+}
+
+.option_label {
+	font-size: 14px;
+	color: #333;
+	position: static;
+	text-align: right;
+	float: left;
+	padding-top: 1px;
+	margin-right: 15px;
+	width: 250px;
+}
+
+#float_frame {
+	height: 200px;
+}
+
+#float_frame p input {
+	display: inline-block;
+	border: 1px solid;
+	border-top-color: #7C7C7C;
+	border-right-color: #C3C3C3;
+	border-bottom-color: #DDD;
+	border-left-color: #C3C3C3;
+}
+
+#float_frame p {
+	display: block;
+	float: left;
+}
+
+#set_options {
+	display: block;
+}
