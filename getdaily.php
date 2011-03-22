@@ -1,29 +1,24 @@
 <?php
-session_start();
-/**
- * prepare json object
- * ===================
+/*!
+ * Initialization
+ * =======================
  */
-class JsonObj {
-    var $data;
-    function setData($foo) {
-        $this->data = $foo;
-    }
-}
+require_once(dirname(__FILE__) . "/json_obj.php");
+
+session_start();
+
+/* prepare json object */
 
 $obj = new JsonObj;
 
-/**
- * connect to database and fetch data
- * ==================================
- */
+/* connect to database and fetch data */
 
 $con = mysql_connect('localhost', 'root', 'styx_hy');
 if (!isset($con)) {
     echo "cannot connect to db";
 }
 
-mysql_select_db('pchms', $con);
+mysql_select_db('intelpchms', $con);
 
 
 /*!
@@ -31,7 +26,7 @@ mysql_select_db('pchms', $con);
  * ========================
  */
 
-$query = "SELECT * FROM (SELECT span*86400000 as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0) span, COUNT(dtstamp) times FROM mousetable WHERE userid='$_SESSION[userid]' GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -'$_GET[time_span_s]' day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -'$_GET[time_span_e]' day))*1000";
+$query = "SELECT * FROM (SELECT span*86400*" . $_POST['interval']. " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM " . $_POST['table'] . " WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000";
 $result1 = mysql_query($query, $con);
 
 while ($tmp = mysql_fetch_array($result1, MYSQL_NUM)) {

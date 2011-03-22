@@ -14,14 +14,14 @@
 }
 
 #regholder {
-	height: 450px;
+	height: 700px;
 	width: 900px;
 	-moz-border-radius:20px;
 	-webkit-border-radius:20px;
 	border-radius: 20px;
 }
 #formitems {
-	height: 500px;
+	height: 600px;
 	width: 75%;
 	/*border-right: 1px solid #FFF;*/
 	/*background-color: #FFF;*/
@@ -42,6 +42,7 @@
 #reg_info p {
 	display: block;
 	line-height: 26px;
+	text-align: left;
 }
 #reg_info p span {
 	display: inline;
@@ -61,8 +62,8 @@
 #formholder {
 	font-family: Tahoma, Geneva, sans-serif;
 	color: #333;
-	width: 60%;
-	height: 350px;
+	width: 70%;
+	height: 475px;
 	padding-top: 10px;
 }
 .reg_input {
@@ -79,7 +80,7 @@
 	font-size: 14px;
 }
 .hint {
-	margin-left: 85px;
+	margin-left: 10px;
 }
 .xf {
 	color: #F00;
@@ -105,7 +106,9 @@ input {
 	height: 35px;
 }
 #registered {
+	vertical-align: bottom;
 	color: #333;
+	position: relative;
 	width: 75%;
 	border-top: 1px solid #999;
 }

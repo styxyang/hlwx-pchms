@@ -22,11 +22,14 @@ session_start();
     <script language="javascript" type="text/javascript" src="/jquery.flot.crosshair.js"></script>
     <script language="javascript" type="text/javascript" src="../jquery.flot.stack.js"></script>
     <script language="javascript" type="text/javascript">
-      $(document).ready(function () {
-      $("#menus ul li").mouseover(function() {
-      $(this).addClass("over");}).mouseout(function() {
-      $(this).removeClass("over");});
-      $("#menus ul li:even").addClass("alt");
+    $(document).ready(function () {
+	$("#menus ul li").mouseover(function() {
+	    $(this).addClass("over");}).mouseout(function() {
+		$(this).removeClass("over");});
+	$("#menus ul li:even").addClass("alt");
+	$("a").not($(".chart_select")).mouseover(function () {
+	    $(this).addClass("light");}).mouseout(function () {
+		$(this).removeClass("light")});
 
       });
     </script>
@@ -57,12 +60,12 @@ session_start();
       <div id="plot">
         <div id="menus">
           <ul>
-            <li><a href="javascript:void(0);" id="daily_count"> Daily Count </a></li>
-            <li><a href="javascript:void(0);" id="mouse_count"> Mouse Count </a></li>
-            <li><a href="javascript:void(0);" id="keyboard_count"> Keyboard Count </a></li>
-            <li><a href="javascript:void(0);" id="scatter"> Click Scatterring </a></li>
-            <li><a href="javascript:void(0);" id="heatmap"> Heat Map </a></li>
-            <li><a href="javascript:void(0);" id="enable_tooltip"> Enable Tooltip </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="daily_count"> Daily Count </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="mouse_count"> Mouse Count </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="keyboard_count"> Keyboard Count </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="scatter"> Click Scatterring </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="heatmap"> Heat Map </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="enable_tooltip"> Enable Tooltip </a></li>
           </ul>
         </div>
         <div id="holder">

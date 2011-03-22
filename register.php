@@ -45,22 +45,19 @@ session_start();
             <form name="reg" id="reg_info" method="post" action="action.php?action=register">
               <p>
                 <label class="reg_input" for="user_name"><span title="Required" class="xf">*</span> Email</label>
-                <input type="text" tabindex="1" name="user_name" id="email"></input>
-              <p class="hint" align="left">登录及用于找回密码</p>
+                <input type="text" tabindex="1" name="user_name" id="email"></input><span class="hint" align="left">登录及用于找回密码</span>
               </p>
               <p>
                 <label class="reg_input" for="user_name"><span title="Required" class="xf">*</span> 用户名</label>
-                <input type="text" tabindex="2" name="user_name" id="user_name"></input>
-              <p class="hint" align="left">常用网名，可使用真实姓名</p>
+                <input type="text" tabindex="2" name="user_name" id="user_name"></input><span class="hint" align="left">常用网名，可使用真实姓名</span>
               </p>
               <p>
                 <label class="reg_input" for="pwd"><span title="Required" class="xf">*</span> 密码</label>
-                <input type="password" tabindex="3" name="pwd" id="pwd"></input>
-              <p class="hint" align="left">最少4个字符</p>
+                <input type="password" tabindex="3" name="pwd" id="pwd"></input><span class="hint" align="left">最少4个字符</span>
               </p>
               <p>
                 <label class="reg_input" for="pwd_rep"><span title="Required" class="xf">*</span> 确认密码</label>
-                <input type="password" tabindex="4" name="pwd_rep" id="pwd_rep"></input>
+                <input type="password" tabindex="4" name="pwd_rep" id="pwd_rep"></input><span class="hint" align="left">再次输入密码</span>
               </p>
 	      <p>
 		<label class="reg_input" for="age"><span title="Required" class="xf">*</span> 年龄</label>
@@ -85,15 +82,14 @@ session_start();
 	      </p>
 	      <p>
 		<label class="reg_input" for="grade"><span title="Required" class="xf">*</span> 年级</label>
-		<input type="text" tabindex="10" name="grade" id="grade"></input>
+		<input type="text" tabindex="10" name="grade" id="grade"></input><span class="hint" align="left">输入整数1～4</span>
 	      </p>
-              <div style="height: 35px;line-height: 35px;">
+	      <div style="height: 35px;line-height: 35px;">
                 <input type="submit" tabindex="5" value="注册" id="submit_button"></input>
-              </div>
-            </form>
+	      </div>
+	    </form>
           </div>
-          <div id="registered" align="center">
-            已经注册过了？<a href="index.php">登录</a>
+          <div id="registered" align="center">已经注册过了？<a href="index.php">登录</a>
           </div>
         </div>
       </div>

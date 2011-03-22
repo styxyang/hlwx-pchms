@@ -15,6 +15,11 @@ a:link, a:visited {
 	text-decoration:none;
 }
 
+.light {
+	background: #039;
+	color: #FFF;
+}
+
 #top_title {
 	width:800px;
 	height:90px;

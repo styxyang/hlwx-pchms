@@ -56,7 +56,7 @@ window.onload = function() {
             time_span_e: time_span_e,
             interval: interval
 	};
-l        var data_mouse = [];
+        var data_mouse = [];
         var data_key = [];
         function on_data_received(series) {
             data = series.data;

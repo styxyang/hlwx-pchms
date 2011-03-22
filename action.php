@@ -1,6 +1,13 @@
 <?php
 session_start();     /* initialize session */
+
+$host = 'localhost';
+$db = 'intelpchms';
+$user = 'root';
+$pwd = 'styx_hy';
+
 echo count($_SESSION);
+print_r($_SESSION);
 switch ($_GET['action']) {
 case "login":
   login();
@@ -22,16 +29,18 @@ case "register":
  */
 
 function login() {
-  $link = mysql_connect("localhost", "root", "styx_hy");
+  // refer to global variables
+  global $host, $user, $pwd, $db;
+
+  $link = mysql_connect($host, $user, $pwd);
   if (!isset($link))
     die("cannot connect to database");
 
-  mysql_select_db("pchms", $link);
+  mysql_select_db($db, $link);
 
-  $query = "SELECT * FROM usertable WHERE username=('$_POST[username]') AND password=('$_POST[passwd]')";
-
+  $query = "SELECT * FROM usertable WHERE username = '$_POST[username]' AND password = '$_POST[passwd]'";
   $result = mysql_query($query, $link);
-
+  echo $query;
   if (mysql_num_rows($result) == 0) {
     echo "this user does not exist";
     mysql_close($link);
