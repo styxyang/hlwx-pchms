@@ -26,7 +26,7 @@ mysql_select_db('intelpchms', $con);
  * ========================
  */
 
-$query = "SELECT * FROM (SELECT span*8640000*" . $_POST['interval']. " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM mousetable WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000";
+$query = "SELECT * FROM (SELECT span*86400000 as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0) span, COUNT(dtstamp) times FROM mousetable WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000";
 $result = mysql_query($query, $con);
 
 $personal = new DataPack;
@@ -35,17 +35,17 @@ while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
   $final[] = $tmp;
 }
 //echo $query;
-$personal->setLabel("Personal Mouse Click");
+$personal->setLabel("Mouse Click");
 $personal->setData($final);
 
-$query = "SELECT * FROM (SELECT span*8640000*" . $_POST['interval'] . " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/8640.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM keytable WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST[time_span_s] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST[time_span_e] . " day))*1000";
+$query = "SELECT * FROM (SELECT span*86400000 as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0) span, COUNT(dtstamp) times FROM keytable WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST[time_span_s] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST[time_span_e] . " day))*1000";
 $result = mysql_query($query, $con);
 
 while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
   $glo[] = $tmp;
 }
 $global = new DataPack;
-$global->setLabel("Global Count");
+$global->setLabel("KeyBoard Count");
 $global->setData($glo);
 
 $data = array($personal, $global);

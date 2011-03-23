@@ -60,8 +60,8 @@ window.onload = function() {
         var data_key = [];
         function on_data_received(series) {
             data = series.data;
-            $.plot($("#placeholder"), [ { data:data[0], label: "Mouse Data" },
-                                        { data:data[1], label: "Keyboard Data" } ], options);
+            $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label },
+                                        { data:data[1].data, label: data[1].label } ], options);
         }
         $.ajax({
             url: dataurl,
@@ -156,13 +156,13 @@ window.onload = function() {
         var already_fetched = {};
         var data = [];
         function on_data_received(series) {
-            //alert(series);
+            alert(series);
             data = series.data;
             if (global_data) 
-                $.plot($("#placeholder"), [ { data:data[0], label: "Keyboard Cound" },
-                                            { data:data[1], label: "Global Count" }], options);
+                $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label },
+                                            { data:data[1].data, label: data[1].label }], options);
             else
-                $.plot($("#placeholder"), [ { data:data[0], label: "Keyboard Cound" }], options);
+                $.plot($("#placeholder"), [ { data:data[0].data, label: data[1].label }], options);
         }
         $.ajax({
             url: dataurl,
@@ -204,7 +204,7 @@ window.onload = function() {
         var data = [];
         function on_data_received(series) {
             data.push(series.data);
-            $.plot($("#placeholder"), [ { data:data[0], label: "Click" } ], options);
+            $.plot($("#placeholder"), [ { data:data[0].data, label: "Click" } ], options);
         }
         $.ajax({
             url: dataurl,

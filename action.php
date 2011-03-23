@@ -21,8 +21,6 @@ case "register":
 }
 
 
-
-
 /*!
  * Login: Connect to the database for authenticate
  * ========================================
@@ -63,11 +61,11 @@ function logout() {
 }
 
 function register() {
-  $link = mysql_connect("localhost", "root", "styx_hy");
+  $link = mysql_connect($host, $user, $pwd);
   if (!isset($link))
     die("cannot connect to database");
 
-  mysql_select_db("intelpchms", $link);
+  mysql_select_db($db, $link);
   $query = "SELECT * FROM usertable WHERE username=('$_POST[user_name]') AND password=('$_POST[pwd]')";
 
   $result = mysql_query($query, $link);
@@ -75,7 +73,7 @@ function register() {
   if (mysql_num_rows($result) == 0) {
     echo "this user does not exist";
     echo $_POST['username'];
-    $query = "INSERT INTO usertable(username, password, regtime) values('$_POST[user_name]', '$_POST[pwd]',curtime())";
+    $query = "INSERT INTO usertable(username, password, regtime, age, faculty, sex, city, school, grade) values('$_POST[user_name]', '$_POST[pwd]',curtime(), $_POST[age], '$_POST[faculty], $_POST[sex])";
     mysql_query($query, $link);
     mysql_close($link);
   } else {

@@ -44,8 +44,8 @@ session_start();
           <div id="formholder" aligh="left">
             <form name="reg" id="reg_info" method="post" action="action.php?action=register">
               <p>
-                <label class="reg_input" for="user_name"><span title="Required" class="xf">*</span> Email</label>
-                <input type="text" tabindex="1" name="user_name" id="email"></input><span class="hint" align="left">登录及用于找回密码</span>
+                <label class="reg_input" for="email"><span title="Required" class="xf">*</span> Email</label>
+                <input type="text" tabindex="1" name="email" id="email"></input><span class="hint" align="left">登录及用于找回密码</span>
               </p>
               <p>
                 <label class="reg_input" for="user_name"><span title="Required" class="xf">*</span> 用户名</label>
