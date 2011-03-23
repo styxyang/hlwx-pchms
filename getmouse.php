@@ -18,20 +18,22 @@ if (!isset($con)) {
     echo "cannot connect to db";
 }
 
-mysql_select_db('pchms', $con);
+mysql_select_db('intelpchms', $con);
 
 
 /*!
  * Query data from database
  * ========================
  */
-$query = "SELECT * FROM (SELECT span*60000*" . $_POST['interval']. " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/60.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM " . $_POST['table'] . " WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000;";
+$query = "SELECT * FROM (SELECT `span`*60000*" . $_POST['interval']. " as `stamp`, `times` FROM (SELECT CEIL(UNIX_TIMESTAMP(`dtstamp`)/60.0/" . $_POST['interval'] . ") `span`, COUNT(`dtstamp`) `times` FROM `" . $_POST['table'] . "` WHERE `userid`=" . $_SESSION['userid'] . " GROUP BY `span`) `x` ) `y` WHERE `stamp`<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and `stamp` >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000;";
 $result = mysql_query($query, $con);
 
 $personal = new DataPack;
+//echo mysql_num_rows($result);
 while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
   $final[] = $tmp;
 }
+//echo $query;
 $personal->setLabel("Personal Mouse Click");
 $personal->setData($final);
 

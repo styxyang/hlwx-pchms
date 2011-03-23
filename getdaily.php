@@ -26,27 +26,29 @@ mysql_select_db('intelpchms', $con);
  * ========================
  */
 
-$query = "SELECT * FROM (SELECT span*86400*" . $_POST['interval']. " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM " . $_POST['table'] . " WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000";
-$result1 = mysql_query($query, $con);
+$query = "SELECT * FROM (SELECT span*8640000*" . $_POST['interval']. " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM mousetable WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000";
+$result = mysql_query($query, $con);
 
-while ($tmp = mysql_fetch_array($result1, MYSQL_NUM)) {
-    $final[] = $tmp;
+$personal = new DataPack;
+//echo mysql_num_rows($result);
+while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
+  $final[] = $tmp;
 }
+//echo $query;
+$personal->setLabel("Personal Mouse Click");
+$personal->setData($final);
 
-$query = "SELECT * FROM (SELECT span*86400000 as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/86400.0) span, COUNT(dtstamp) times FROM keytable WHERE userid=('$_SESSION[userid]') GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -'$_GET[time_span_s]' day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -'$_GET[time_span_e]' day))*1000";
+$query = "SELECT * FROM (SELECT span*8640000*" . $_POST['interval'] . " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/8640.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM keytable WHERE userid=" . $_SESSION['userid'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST[time_span_s] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST[time_span_e] . " day))*1000";
+$result = mysql_query($query, $con);
 
-$result2 = mysql_query($query, $con);
-
-while ($tmp = mysql_fetch_array($result2, MYSQL_NUM)) {
-    $last[] = $tmp;
-    for ($i = 0; $i < count($final); $i++) {
-        if ($final[$i][0] == $tmp[0]) {
-            $final[$i][1] += $tmp[1];
-        }
-    }
+while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
+  $glo[] = $tmp;
 }
+$global = new DataPack;
+$global->setLabel("Global Count");
+$global->setData($glo);
 
-$data = array($final, $last);
+$data = array($personal, $global);
 
 /**
  * Data Completion for JSON object

@@ -103,6 +103,7 @@ window.onload = function() {
         var already_fetched = {};
         var data = [];
         function on_data_received(series) {
+	    //alert(series);
             data = series.data;
 	    //alert(data[0].label);
             if (global_data) 
