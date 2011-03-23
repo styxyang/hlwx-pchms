@@ -41,7 +41,7 @@ window.onload = function() {
             },
             series: {
                 stack: stack,
-                bars: { show: bars, barWidth: 10 }
+                bars: { show: true, barWidth: 10 }
             },
             legend: { show: true, position: 'ne' },
             grid: {
@@ -60,7 +60,7 @@ window.onload = function() {
         var data_key = [];
         function on_data_received(series) {
             data = series.data;
-            $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label },
+            $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label, bars: { show: true} },
                                         { data:data[1].data, label: data[1].label } ], options);
         }
         $.ajax({
@@ -81,9 +81,10 @@ window.onload = function() {
         $("#chart_title").html("Mouse Count Per 10 minutes");
         var options = {
             xaxis: {
+		show: true,
                 color: ["#ffffff"],
                 mode: "time",
-                timeformat: "%h:%M\r%m/%d"
+                //timeformat: "%h:%M\r%m/%d"
             },
             lines: { show: true },
             points: { show: true },
@@ -156,7 +157,6 @@ window.onload = function() {
         var already_fetched = {};
         var data = [];
         function on_data_received(series) {
-            alert(series);
             data = series.data;
             if (global_data) 
                 $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label },
@@ -390,7 +390,7 @@ function draw_heat_map(series) {
     var points = [];
     points.push(series.data);
     var canvas = document.getElementById("myCanvas");
-    var context = canvas.getContext('2d');
+    var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalAlpha = 0.8;
     context.globalCompositeOperation = "lighter";
