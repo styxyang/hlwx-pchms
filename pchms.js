@@ -179,7 +179,7 @@ window.onload = function() {
         current = "#scatter";
         document.getElementById("placeholder").style.display = "block";
         document.getElementById("myCanvas").style.display = "none";
-        $("#chart_title").html("Mouse Click on the Screen");
+        $("#chart_title").html("Mouse Click on the Screen - latest 4000 click");
         var options = {
             xaxis: {
                 color: ["#000"],
@@ -194,7 +194,7 @@ window.onload = function() {
                 hoverable: true,
             }
         };
-        var dataurl = "getclickscatter.php";
+        var dataurl = "getheat.php";
 	var post_info = {
             time_span_s: time_span_s,
             time_span_e: time_span_e,
@@ -203,8 +203,8 @@ window.onload = function() {
         var already_fetched = {};
         var data = [];
         function on_data_received(series) {
-            data.push(series.data);
-            $.plot($("#placeholder"), [ { data:data[0].data, label: "Click" } ], options);
+            data = series.data;
+            $.plot($("#placeholder"), [ { data:data, label: "Click on the Screen" } ], options);
         }
         $.ajax({
             url: dataurl,
