@@ -261,10 +261,10 @@ body {
 	border-radius: 10px;
 }
 
-#download_list ul li {
-    display: list-item;
+#placeholder ul {
+	font-size: 18;
+	list-style-type: disc;
 }
-#download_list ul {
-    display: block;
-    list-style-type: disc;
+#placeholder ul li {
+	display: list-item;
 }

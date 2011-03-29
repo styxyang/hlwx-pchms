@@ -37,14 +37,14 @@ while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
 $personal->setLabel("Personal Mouse Click");
 $personal->setData($final);
 
-$query = "SELECT * FROM (SELECT span*60000*" . $_POST['interval'] . " as stamp, times FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/60.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM " . $_POST['table'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000;";
+$query = "SELECT * FROM (SELECT span*60000*" . $_POST['interval'] . " as stamp, times/(select count(*) from usertable) FROM (SELECT CEIL(UNIX_TIMESTAMP(dtstamp)/60.0/" . $_POST['interval'] . ") span, COUNT(dtstamp) times FROM " . $_POST['table'] . " GROUP BY span) x ) y WHERE stamp<=UNIX_TIMESTAMP(date_add(curdate(), interval -" . $_POST['time_span_s'] . " day))*1000 and stamp >= UNIX_TIMESTAMP(date_add(curdate(),interval -" . $_POST['time_span_e'] . " day))*1000;";
 $result = mysql_query($query, $con);
 
 while ($tmp = mysql_fetch_array($result, MYSQL_NUM)) {
   $glo[] = $tmp;
 }
 $global = new DataPack;
-$global->setLabel("Global Count");
+$global->setLabel("Global Average Count");
 $global->setData($glo);
 
 $data = array($personal, $global);

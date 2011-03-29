@@ -82,9 +82,9 @@ window.onload = function() {
         var options = {
             xaxis: {
 		show: true,
-                color: ["#ffffff"],
+                color: ["#000"],
                 mode: "time",
-                //timeformat: "%h:%M\r%m/%d"
+                timeformat: "%h:%M\r%m/%d"
             },
             lines: { show: true },
             points: { show: true },
@@ -108,8 +108,8 @@ window.onload = function() {
             data = series.data;
 	    //alert(data[0].label);
             if (global_data) 
-                $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label },
-                                            { data:data[1].data, label: data[1].label }], options);
+                $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label, points: { symbol: "circle" } },
+                                            { data:data[1].data, label: data[1].label, points: { symbol: "triangle" } }], options);
             else
                 $.plot($("#placeholder"), [ { data:data[0].data, label: data[0].label }], options);
 	}
@@ -237,6 +237,16 @@ window.onload = function() {
         });
         
     });
+
+    $("#extension").click(function () {
+        current = "#heatmap";
+        document.getElementById("placeholder").style.display = 'block';
+        document.getElementById("myCanvas").style.display = 'none';
+        $("#chart_title").html("Download Extensional Charts");
+
+        $("#placeholder").html("<div id='extension_list'><h4>List of Extensions</h4><ul><li>- Chart 1</li><li>- Chart 2</li><li>- Chart 3</li><li>- Chart 4</li></ul></div>");
+    });
+    
 
     // button to enable tooltip on the graph
     $("#enable_tooltip").click(function() {

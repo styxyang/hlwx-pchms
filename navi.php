@@ -19,8 +19,9 @@ session_start();
     <script language="javascript" type="text/javascript" src="/jquery.flot.js"></script>
     <script language="javascript" type="text/javascript" src="/jquery.floatbox.js"></script>
     <script language="javascript" type="text/javascript" src="/pchms.js"></script>
-    <script language="javascript" type="text/javascript" src="/jquery.flot.crosshair.js"></script>
-    <script language="javascript" type="text/javascript" src="../jquery.flot.stack.js"></script>
+    <!-- <script language="javascript" type="text/javascript" src="/jquery.flot.crosshair.js"></script> -->
+    <script language="javascript" type="text/javascript" src="/jquery.flot.stack.js"></script>
+    <script language="javascript" type="text/javascript" src="/jquery.flot.symbol.js"></script>
     <script language="javascript" type="text/javascript">
     $(document).ready(function () {
 	$("#menus ul li").mouseover(function() {
@@ -65,6 +66,7 @@ session_start();
             <li><a href="javascript:void(0);" class="chart_select" id="keyboard_count"> Keyboard Count </a></li>
             <li><a href="javascript:void(0);" class="chart_select" id="scatter"> Click Scatterring </a></li>
             <li><a href="javascript:void(0);" class="chart_select" id="heatmap"> Heat Map </a></li>
+            <li><a href="javascript:void(0);" class="chart_select" id="extension"> Extensions </a></li>
             <li><a href="javascript:void(0);" class="chart_select" id="enable_tooltip"> Enable Tooltip </a></li>
           </ul>
         </div>
